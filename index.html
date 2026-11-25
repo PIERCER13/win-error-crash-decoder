@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="piercer" />
+  <title>Piercer Windows Error & Crash Decoder</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Piercer Windows Error &amp; Crash Decoder</h1>
+      <p class="subtitle">Decodificador de códigos NTSTATUS / HRESULT / Win32 e analisador de saída !analyze -v do WinDbg</p>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>Decodificador Rápido de Código</h2>
+      <div class="field">
+        <label>Código Hex ou Decimal (ex: 0xC0000005, 0x80070005, 5)</label>
+        <input type="text" id="errCode" value="0xC0000005" />
+      </div>
+      <div id="codeOut" class="status-box"></div>
+
+      <h2 style="margin-top:16px;">Códigos Comuns</h2>
+      <div class="quick-btns">
+        <button type="button" class="btn q-code" data-c="0xC0000005">0xC0000005</button>
+        <button type="button" class="btn q-code" data-c="0x80070005">0x80070005</button>
+        <button type="button" class="btn q-code" data-c="0xC0000034">0xC0000034</button>
+        <button type="button" class="btn q-code" data-c="0xC0000135">0xC0000135</button>
+        <button type="button" class="btn q-code" data-c="0xC0000409">0xC0000409</button>
+        <button type="button" class="btn q-code" data-c="0x80004005">0x80004005</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Analisador de Log WinDbg (!analyze -v)</h2>
+      <textarea id="windbgLog" rows="8" placeholder="Cole a saída do !analyze -v, call stack (k) ou módulos...">EXCEPTION_CODE: (NTSTATUS) 0xc0000005 - The instruction at 0x00007ff6a1b20010 referenced memory at 0x0000000000000000.
+FAULTING_IP: app+1200
+MODULE_NAME: app
+IMAGE_NAME: app.exe
+PROCESS_NAME: app.exe</textarea>
+      <pre id="windbgOut" class="code-out" style="margin-top:10px;"></pre>
+    </section>
+  </main>
+  <script src="./piercer_i18n.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
